@@ -69,7 +69,7 @@ Filtering at native 5 Hz minimizes interpolation-induced high-frequency artifact
 ## 5. Upsampling with cubic spline (5 Hz → 100 Hz)
 
 For each channel independently, construct a cubic spline \(s(t)\) from valid samples and evaluate on the dense grid.
-Implementation target: `scipy.interpolate.CubicSpline` (or equivalent spline interface from `scipy.interpolate`).
+Implementation requirement: use `scipy.interpolate.CubicSpline` to keep interpolation behavior deterministic across runs/environments.
 
 ## 6. Detrending
 

@@ -28,8 +28,9 @@ Identify and report Data Gaps where time increment exceeds threshold.
 
 #### `handle_gaps(df: pandas.DataFrame, mode: str = "pad") -> list[pandas.DataFrame]`
 Apply `pad` (zero-fill) or `split` strategy before interpolation.
+- If no gaps are detected, both modes return a one-item list containing the original DataFrame.
 - `pad`: returns a one-item list with continuity-preserved DataFrame.
-- `split`: returns multiple DataFrames, one contiguous segment per gap-delimited block.
+- `split`: returns multiple DataFrames only when gaps exist, one contiguous segment per gap-delimited block.
 
 #### `resample_cubic(time_s, xyz, fs_out: int = 100) -> tuple[numpy.ndarray, numpy.ndarray]`
 Upsample 5 Hz records to 100 Hz using cubic spline interpolation.
@@ -74,6 +75,7 @@ Load EQTransformer-compatible model weights (`instance` or `ethz`).
 
 #### `predict(batch) -> list[dict]`
 Run inference and return detections/picks.
+Each dict is expected to include at least: `trace_name`, `detection_time`, `probability`, and `pick_type`.
 
 ---
 
