@@ -59,8 +59,8 @@ Expected outputs:
 
 ## Data and model assumptions
 
-1. Input channels are prioritized in this order: `AZ1(m/s2)`, `AX1(m/s2)`, `AY1(m/s2)`.
-2. Data gaps are detected when `Times(s)` increments exceed **0.2 s**.
+1. Input channels are required as tri-axial acceleration fields: `AZ1(m/s2)`, `AX1(m/s2)`, `AY1(m/s2)`.
+2. Data gaps are detected when `Times(s)` increments exceed `gap_threshold_s` (default **0.2 s**, configured in `pipeline_config.yaml`).
 3. Each exported trace is a 60-second window at 100 Hz: `6000` samples × `3` channels.
 4. Model weights are selected from SeisBench presets (`instance` or `ethz`).
 

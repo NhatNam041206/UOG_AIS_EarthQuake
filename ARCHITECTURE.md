@@ -20,7 +20,7 @@ This layout improves testability, maintainability, and portability across data s
 - Validates missing columns and returns canonical DataFrame format.
 
 ### `DSPService` (`src/services/dsp_service.py`)
-- Detects data gaps where `Δt > 0.2 s`.
+- Detects data gaps where `Δt > gap_threshold_s` (default `0.2 s` from config).
 - Applies optional split/pad policy for gaps.
 - Resamples 5 Hz data to 100 Hz using cubic spline interpolation (`scipy.interpolate`).
 - Detrends and applies 1.0–2.4 Hz bandpass filtering.

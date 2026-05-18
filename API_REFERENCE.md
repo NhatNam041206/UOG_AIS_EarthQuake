@@ -28,9 +28,12 @@ Identify and report Data Gaps where time increment exceeds threshold.
 
 #### `handle_gaps(df: pandas.DataFrame, mode: str = "pad") -> list[pandas.DataFrame]`
 Apply `pad` (zero-fill) or `split` strategy before interpolation.
+- `pad`: returns a one-item list with continuity-preserved DataFrame.
+- `split`: returns multiple DataFrames, one contiguous segment per gap-delimited block.
 
 #### `resample_cubic(time_s, xyz, fs_out: int = 100) -> tuple[numpy.ndarray, numpy.ndarray]`
 Upsample 5 Hz records to 100 Hz using cubic spline interpolation.
+Return tuple elements in order: `(time_resampled, xyz_resampled)`.
 
 #### `detrend(xyz) -> numpy.ndarray`
 Remove linear trend from each channel.
